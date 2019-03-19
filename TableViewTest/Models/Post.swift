@@ -31,7 +31,14 @@ class Post {
     convenience init(json: JSON) {
         let user = User(json: json)
         let postId = json["id"].uInt64Value
-        let date = Date()
+        
+        let dateString = json["date"].stringValue
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE MMM d HH:mm:ss Z yyyy"
+        guard let date = dateFormatter.date(from: dateString) else {
+            fatalError("Failed to parse date format.")
+        }
+        
         let photoURL = json["photo"].string
         let message = json["message"].string
         self.init(postId: postId, user: user, date: date, message: message, photoURLString: photoURL)

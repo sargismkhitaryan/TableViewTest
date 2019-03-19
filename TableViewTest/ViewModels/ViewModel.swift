@@ -9,6 +9,13 @@
 import Foundation
 
 class PostViewModel {
+    
+    var dateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy h:mm a "
+        return dateFormatter
+    }
+    
     private let post: Post
     
     init(post: Post) {
@@ -20,7 +27,7 @@ class PostViewModel {
     }
     
     var dateString: String {
-        return "Yesterday"
+        return dateFormatter.string(from: post.date)
     }
     
     var message: String? {
