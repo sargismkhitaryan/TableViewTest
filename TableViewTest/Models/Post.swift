@@ -16,6 +16,8 @@ class Post {
     var message: String?
     var photoURLString: String?
     
+    var calculatedMessageHeight: CGFloat = 0.0
+    
     init(postId: UInt64, user: User, date: Date, message: String?, photoURLString: String?) {
         self.postId = postId
         self.date = date

@@ -45,4 +45,9 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.updatePostModel(viewModel)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let messageHeight = PostTableViewCell.height(for: posts[indexPath.row], width: tableView.bounds.width)
+        return messageHeight
+    }
 }

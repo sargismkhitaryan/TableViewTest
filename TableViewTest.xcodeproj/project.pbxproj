@@ -19,6 +19,7 @@
 		9CE265DD224112E200C408D5 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE265DB224112E200C408D5 /* PostTableViewCell.xib */; };
 		9CE265DF224114E100C408D5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE265DE224114E100C408D5 /* ViewModel.swift */; };
 		BC7062FA89308E35C6464A3B /* Pods_TableViewTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC6733A50D8833AEC206987 /* Pods_TableViewTest.framework */; };
+		F107B8BB22414D8E0090269F /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107B8BA22414D8E0090269F /* UIExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		9CE265DA224112E200C408D5 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9CE265DB224112E200C408D5 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		9CE265DE224114E100C408D5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F107B8BA22414D8E0090269F /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		9CE265BC2240BB3E00C408D5 /* TableViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				F107B8B922414D6A0090269F /* Extensions */,
 				9CE265D22240BB7100C408D5 /* ViewModels */,
 				9CE265D12240BB6A00C408D5 /* Views */,
 				9CE265D72240F8F000C408D5 /* Services */,
@@ -135,6 +138,14 @@
 				9CE265D82240FA2E00C408D5 /* DataManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F107B8B922414D6A0090269F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F107B8BA22414D8E0090269F /* UIExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F158135C4782C7B5C9C02526 /* Pods */ = {
@@ -266,6 +277,7 @@
 				9CE265D62240C7F500C408D5 /* User.swift in Sources */,
 				9CE265D92240FA2E00C408D5 /* DataManager.swift in Sources */,
 				9CE265D42240BE0A00C408D5 /* Post.swift in Sources */,
+				F107B8BB22414D8E0090269F /* UIExtensions.swift in Sources */,
 				9CE265C02240BB3E00C408D5 /* PostsViewController.swift in Sources */,
 				9CE265BE2240BB3E00C408D5 /* AppDelegate.swift in Sources */,
 				9CE265DC224112E200C408D5 /* PostTableViewCell.swift in Sources */,
@@ -419,7 +431,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZRGPNYSUR;
 				INFOPLIST_FILE = TableViewTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sargismk.TableViewTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -435,7 +450,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YZRGPNYSUR;
 				INFOPLIST_FILE = TableViewTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sargismk.TableViewTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
