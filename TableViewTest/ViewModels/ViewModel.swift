@@ -30,4 +30,8 @@ class PostViewModel {
     var userImageURL: URL? {
         return post.user.photoURL
     }
+    
+    var photoURL: URL? {
+        return post.photoURL
+    }
 }

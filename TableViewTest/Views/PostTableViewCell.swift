@@ -11,7 +11,8 @@ import SDWebImage
 
 class PostTableViewCell: UITableViewCell {
 
-    static var font: UIFont = UIFont.systemFont(ofSize: 14.0)
+    static let photoHeight: CGFloat = 280.0
+    static let font: UIFont = UIFont.systemFont(ofSize: 14.0)
     
     // MARK: - Properties
     
@@ -20,6 +21,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postDateLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var postContentView: UIView!
+    @IBOutlet weak var photoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var postPhotoImageView: UIImageView!
     
     // MARK: - Overriden Methods
     
@@ -42,6 +45,12 @@ class PostTableViewCell: UITableViewCell {
                 self?.userImageView.image = image.circle
             }
         }
+        if let url = model.photoURL {
+            photoHeightConstraint.constant = type(of: self).photoHeight
+            postPhotoImageView.sd_setImage(with: url, completed: nil)
+        } else {
+            photoHeightConstraint.constant = 0.0
+        }
     }
     
     static func height(for post: Post, width: CGFloat) -> CGFloat {
@@ -55,6 +64,9 @@ class PostTableViewCell: UITableViewCell {
             let size = CGSize(width: width - 70.0, height: CGFloat.greatestFiniteMagnitude)
             let attributes = [NSAttributedString.Key.font: PostTableViewCell.font]
             height += message.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil).height
+        }
+        if post.photoURL != nil {
+            height += PostTableViewCell.photoHeight
         }
         post.calculatedMessageHeight = height
         return height

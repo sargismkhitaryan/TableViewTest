@@ -14,7 +14,7 @@ class Post {
     let date: Date
     var user: User
     var message: String?
-    var photoURLString: String?
+    var photoURL: URL?
     
     var calculatedMessageHeight: CGFloat = 0.0
     
@@ -23,7 +23,9 @@ class Post {
         self.date = date
         self.user = user
         self.message = message
-        self.photoURLString = photoURLString
+        if let url = photoURLString {
+            self.photoURL = URL(string: url)
+        }
     }
     
     convenience init(json: JSON) {
