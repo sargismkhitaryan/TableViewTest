@@ -19,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="235.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-8s-ltZ">
-                        <rect key="frame" x="24" y="19" width="272" height="198"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-8s-ltZ">
+                        <rect key="frame" x="8" y="4" width="304" height="227.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-so-MsD">
                                 <rect key="frame" x="8" y="8" width="50" height="50"/>
@@ -30,22 +30,23 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHR-77-f9b">
-                                <rect key="frame" x="66" y="8" width="198" height="21"/>
+                                <rect key="frame" x="66" y="8" width="230" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOs-Xl-k3Q">
-                                <rect key="frame" x="66" y="32" width="198" height="17"/>
+                                <rect key="frame" x="66" y="32" width="230" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fZR-ud-7LU">
-                                <rect key="frame" x="8" y="66" width="256" height="124"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fZR-ud-7LU">
+                                <rect key="frame" x="8" y="66" width="288" height="153.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,15 +67,16 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="SDV-8s-ltZ" secondAttribute="bottom" constant="8" id="3eI-S7-UYc"/>
-                    <constraint firstItem="SDV-8s-ltZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="8iq-Yf-goF"/>
-                    <constraint firstItem="SDV-8s-ltZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="g9X-BO-1eF"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="SDV-8s-ltZ" secondAttribute="trailing" constant="8" id="yws-I7-Vsd"/>
+                    <constraint firstItem="SDV-8s-ltZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="8XF-22-YXr"/>
+                    <constraint firstAttribute="trailing" secondItem="SDV-8s-ltZ" secondAttribute="trailing" constant="8" id="llL-05-9Bb"/>
+                    <constraint firstItem="SDV-8s-ltZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="sgv-PD-Rwv"/>
+                    <constraint firstAttribute="bottom" secondItem="SDV-8s-ltZ" secondAttribute="bottom" constant="4" id="uZ6-Sc-ZD8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="messageTextView" destination="fZR-ud-7LU" id="b50-dg-WoD"/>
+                <outlet property="postContentView" destination="SDV-8s-ltZ" id="Tq3-5T-T03"/>
                 <outlet property="postDateLabel" destination="BOs-Xl-k3Q" id="MIp-hz-8Xd"/>
                 <outlet property="userImageView" destination="YZ6-so-MsD" id="y2J-fP-6h5"/>
                 <outlet property="userNameLabel" destination="tHR-77-f9b" id="hUV-yM-MSb"/>

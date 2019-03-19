@@ -17,6 +17,16 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var postDateLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var postContentView: UIView!
+    
+    // MARK: - Overriden Methods
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        postContentView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.4461419092)
+        postContentView.layer.borderWidth = 2.0
+        postContentView.layer.cornerRadius = 5.0
+    }
     
     // MARK: - Public Methods
     
