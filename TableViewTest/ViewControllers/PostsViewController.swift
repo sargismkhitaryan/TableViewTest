@@ -8,11 +8,20 @@
 
 import UIKit
 
+enum FetchState {
+    case empty
+    case loading
+    case populated
+    case finished
+}
+
 class PostsViewController: UIViewController {
 
     // MARK: - Properties
     
     var posts: [Post] = [Post]()
+    var currentPage: Int = 1
+    var state: FetchState = .populated
     
     @IBOutlet weak var postsTableView: UITableView!
     
@@ -21,17 +30,32 @@ class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postsTableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostTableViewCell")
-        DataManager.instance.fetchPosts(pageNumber: 1) { [unowned self] (result) in
-            switch result {
-            case .failure(let error):
-                print("error:\(error)")
-            case .success(let res):
-                self.posts = res.posts
-                self.postsTableView.reloadData()
+        fetchPosts()
+    }
+    
+    // MARK: - Private Methods
+
+    func fetchPosts() {
+        if state == .populated {
+            state = .loading
+            DataManager.instance.fetchPosts(pageNumber: currentPage) { [unowned self] (result) in
+                switch result {
+                case .failure(let error):
+                    print("error:\(error)")
+                case .success(let res):
+                    self.currentPage += 1
+                    self.posts.append(contentsOf: res.posts)
+                    if (res.total == self.currentPage) {
+                        self.state = .finished
+                    } else {
+                        self.state = .populated
+                    }
+                    self.postsTableView.reloadData()
+                }
             }
         }
     }
-
+    
 }
 
 extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -49,5 +73,11 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let messageHeight = PostTableViewCell.height(for: posts[indexPath.row], width: tableView.bounds.width)
         return messageHeight
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            fetchPosts()
+        }
     }
 }

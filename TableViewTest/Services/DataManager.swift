@@ -32,7 +32,7 @@ class DataManager {
         Alamofire.request(API.post, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON {
             switch $0.result {
             case .failure(let error):
-                print("error: \(error)")
+                debugPrint("error: \(error)")
             case .success(let value):
                 let json: JSON = JSON(value)
                 let total = json["total_pages"].intValue
