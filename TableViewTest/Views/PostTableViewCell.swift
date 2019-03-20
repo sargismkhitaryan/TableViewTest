@@ -58,8 +58,7 @@ class PostTableViewCell: UITableViewCell {
             return post.calculatedMessageHeight
         }
         
-        let userInfoHeight: CGFloat = 106.0
-        var height = userInfoHeight
+        var height: CGFloat = 150.0
         if let message = post.message as NSString? {
             let size = CGSize(width: width - 70.0, height: CGFloat.greatestFiniteMagnitude)
             let attributes = [NSAttributedString.Key.font: PostTableViewCell.font]

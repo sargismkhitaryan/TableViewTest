@@ -19,6 +19,8 @@ class PostsViewController: UIViewController {
 
     // MARK: - Properties
     
+    fileprivate static let postCellId = "PostTableViewCell"
+    
     var posts: [Post] = [Post]()
     var currentPage: Int = 1
     var state: FetchState = .populated
@@ -29,7 +31,7 @@ class PostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postsTableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostTableViewCell")
+        postsTableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: type(of: self).postCellId)
         fetchPosts()
     }
     
@@ -64,7 +66,7 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: self).postCellId, for: indexPath) as! PostTableViewCell
         let viewModel = PostViewModel(post: posts[indexPath.row])
         cell.updatePostModel(viewModel)
         return cell
